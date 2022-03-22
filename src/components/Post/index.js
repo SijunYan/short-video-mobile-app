@@ -5,6 +5,7 @@ import {
   Button,
   TouchableWithoutFeedback,
   Image,
+  TouchableOpacity,
 } from "react-native";
 import { Video, AVPlaybackStatus } from "expo-av";
 import styles from "./styles";
@@ -15,10 +16,23 @@ import {
   FontAwesome,
 } from "@expo/vector-icons";
 
-export default function Post({ postData }) {
+export default function Post(props) {
   const video = React.useRef(null);
   const [status, setStatus] = React.useState({});
-  console.log(status);
+
+  //manipulate post data inside component
+  const [postData, setPostData] = React.useState(props.postData);
+  const [isLiked, setIsLiked] = React.useState(false);
+
+  const handleLike = () => {
+    setIsLiked(!isLiked);
+    let likeAdd = !isLiked ? 1 : -1;
+    setPostData({ ...postData, likes: postData.likes + likeAdd });
+  };
+
+  //   console.log(status);
+  //   console.log(postData);
+
   return (
     <View style={styles.container}>
       <TouchableWithoutFeedback
@@ -52,10 +66,17 @@ export default function Post({ postData }) {
                   }}
                 />
               </View>
-              <View style={styles.iconContainer}>
-                <AntDesign name="heart" size={40} color="white" />
+              <TouchableOpacity
+                style={styles.iconContainer}
+                onPress={handleLike}
+              >
+                <AntDesign
+                  name={isLiked ? "heart" : "hearto"}
+                  size={40}
+                  color={isLiked ? "red" : "white"}
+                />
                 <Text style={styles.statsLabel}>{postData.likes}</Text>
-              </View>
+              </TouchableOpacity>
               <View style={styles.iconContainer}>
                 <FontAwesome name="commenting" size={40} color="white" />
                 <Text style={styles.statsLabel}>{postData.comments}</Text>
