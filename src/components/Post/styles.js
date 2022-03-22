@@ -6,11 +6,11 @@ export default styles = StyleSheet.create({
     // Dimensions.get("screen").height
     // or 'window' : have gap at bottom on android
     // or 100%
-    height: Dimensions.get("screen").height,
+    height: Dimensions.get("screen").height - 45,
   },
   videoContainer: {
     position: "absolute",
-    top: 30,
+    top: 25,
     left: 0,
     bottom: 0,
     right: 0,
@@ -18,7 +18,7 @@ export default styles = StyleSheet.create({
   },
   video: {
     position: "absolute",
-    top: 30,
+    top: 25,
     left: 0,
     bottom: 0,
     right: 0,
