@@ -1,0 +1,210 @@
+/* eslint-disable */
+// this is an auto generated file. This will be overwritten
+
+export const onCreateSong = /* GraphQL */ `
+  subscription OnCreateSong {
+    onCreateSong {
+      id
+      name
+      imageUri
+      Posts {
+        items {
+          id
+          videoUri
+          desc
+          userID
+          songID
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onUpdateSong = /* GraphQL */ `
+  subscription OnUpdateSong {
+    onUpdateSong {
+      id
+      name
+      imageUri
+      Posts {
+        items {
+          id
+          videoUri
+          desc
+          userID
+          songID
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onDeleteSong = /* GraphQL */ `
+  subscription OnDeleteSong {
+    onDeleteSong {
+      id
+      name
+      imageUri
+      Posts {
+        items {
+          id
+          videoUri
+          desc
+          userID
+          songID
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onCreatePost = /* GraphQL */ `
+  subscription OnCreatePost {
+    onCreatePost {
+      id
+      videoUri
+      desc
+      userID
+      songID
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onUpdatePost = /* GraphQL */ `
+  subscription OnUpdatePost {
+    onUpdatePost {
+      id
+      videoUri
+      desc
+      userID
+      songID
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onDeletePost = /* GraphQL */ `
+  subscription OnDeletePost {
+    onDeletePost {
+      id
+      videoUri
+      desc
+      userID
+      songID
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onCreateUser = /* GraphQL */ `
+  subscription OnCreateUser {
+    onCreateUser {
+      id
+      username
+      email
+      imageUri
+      posts {
+        id
+        videoUri
+        desc
+        userID
+        songID
+        createdAt
+        updatedAt
+      }
+      Posts {
+        items {
+          id
+          videoUri
+          desc
+          userID
+          songID
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onUpdateUser = /* GraphQL */ `
+  subscription OnUpdateUser {
+    onUpdateUser {
+      id
+      username
+      email
+      imageUri
+      posts {
+        id
+        videoUri
+        desc
+        userID
+        songID
+        createdAt
+        updatedAt
+      }
+      Posts {
+        items {
+          id
+          videoUri
+          desc
+          userID
+          songID
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onDeleteUser = /* GraphQL */ `
+  subscription OnDeleteUser {
+    onDeleteUser {
+      id
+      username
+      email
+      imageUri
+      posts {
+        id
+        videoUri
+        desc
+        userID
+        songID
+        createdAt
+        updatedAt
+      }
+      Posts {
+        items {
+          id
+          videoUri
+          desc
+          userID
+          songID
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
