@@ -15,6 +15,9 @@ import {
   AntDesign,
   FontAwesome,
 } from "@expo/vector-icons";
+import { Viewport } from "@skele/components";
+
+const ViewportAwareVideo = Viewport.Aware(Video);
 
 export default function Post(props) {
   const video = React.useRef(null);
@@ -22,6 +25,7 @@ export default function Post(props) {
 
   //manipulate post data inside component
   const [postData, setPostData] = React.useState(props.postData);
+  const [toPaly, setToPlay] = React.useState(false);
   const [isLiked, setIsLiked] = React.useState(false);
 
   const handleLike = () => {
@@ -30,30 +34,24 @@ export default function Post(props) {
     setPostData({ ...postData, likes: postData.likes + likeAdd });
   };
 
-  //   console.log(status);
-  //   console.log(postData);
-
   return (
     <View style={styles.container}>
       <TouchableWithoutFeedback
         style={styles.videoContainer}
-        onPress={() =>
-          status.isPlaying
-            ? video.current.pauseAsync()
-            : video.current.playAsync()
-        }
+        onPress={() => (status.isPlaying ? setToPlay(false) : setToPlay(true))}
       >
         <View>
-          <Video
-            ref={video}
+          <ViewportAwareVideo
             style={styles.video}
             source={{
               uri: postData.video,
             }}
             resizeMode="cover"
             isLooping
-            shouldPlay
+            shouldPlay={toPaly}
             onPlaybackStatusUpdate={(status) => setStatus(() => status)}
+            onViewportEnter={() => setToPlay(true)}
+            onViewportLeave={() => setToPlay(false)}
           />
 
           <View style={styles.bottomContainer}>

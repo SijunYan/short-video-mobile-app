@@ -10,7 +10,7 @@ import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
 const Tab = createBottomTabNavigator();
 
 export default function HomeBottomTabNavigatior({ route }) {
-  console.log(route);
+  //   console.log(route);
 
   return (
     <Tab.Navigator
