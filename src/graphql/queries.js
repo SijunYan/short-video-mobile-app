@@ -5,8 +5,8 @@ export const getSong = /* GraphQL */ `
   query GetSong($id: ID!) {
     getSong(id: $id) {
       id
-      name
-      imageUri
+      songName
+      songImageUri
       Posts {
         items {
           id
@@ -33,44 +33,11 @@ export const listSongs = /* GraphQL */ `
     listSongs(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
-        name
-        imageUri
+        songName
+        songImageUri
         Posts {
           nextToken
         }
-        createdAt
-        updatedAt
-      }
-      nextToken
-    }
-  }
-`;
-export const getPost = /* GraphQL */ `
-  query GetPost($id: ID!) {
-    getPost(id: $id) {
-      id
-      videoUri
-      desc
-      userID
-      songID
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const listPosts = /* GraphQL */ `
-  query ListPosts(
-    $filter: ModelPostFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    listPosts(filter: $filter, limit: $limit, nextToken: $nextToken) {
-      items {
-        id
-        videoUri
-        desc
-        userID
-        songID
         createdAt
         updatedAt
       }
@@ -84,16 +51,7 @@ export const getUser = /* GraphQL */ `
       id
       username
       email
-      imageUri
-      posts {
-        id
-        videoUri
-        desc
-        userID
-        songID
-        createdAt
-        updatedAt
-      }
+      userImageUri
       Posts {
         items {
           id
@@ -122,18 +80,78 @@ export const listUsers = /* GraphQL */ `
         id
         username
         email
-        imageUri
-        posts {
+        userImageUri
+        Posts {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const getPost = /* GraphQL */ `
+  query GetPost($id: ID!) {
+    getPost(id: $id) {
+      id
+      videoUri
+      desc
+      userID
+      user {
+        id
+        username
+        email
+        userImageUri
+        Posts {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      songID
+      song {
+        id
+        songName
+        songImageUri
+        Posts {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const listPosts = /* GraphQL */ `
+  query ListPosts(
+    $filter: ModelPostFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listPosts(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        videoUri
+        desc
+        userID
+        user {
           id
-          videoUri
-          desc
-          userID
-          songID
+          username
+          email
+          userImageUri
           createdAt
           updatedAt
         }
-        Posts {
-          nextToken
+        songID
+        song {
+          id
+          songName
+          songImageUri
+          createdAt
+          updatedAt
         }
         createdAt
         updatedAt

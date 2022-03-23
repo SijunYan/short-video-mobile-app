@@ -31,7 +31,7 @@ export default function Post(props) {
   const handleLike = () => {
     setIsLiked(!isLiked);
     let likeAdd = !isLiked ? 1 : -1;
-    setPostData({ ...postData, likes: postData.likes + likeAdd });
+    setPostData({ ...postData, likes: postData?.likes + likeAdd });
   };
 
   return (
@@ -44,7 +44,7 @@ export default function Post(props) {
           <ViewportAwareVideo
             style={styles.video}
             source={{
-              uri: postData.video,
+              uri: postData?.videoUri,
             }}
             resizeMode="cover"
             isLooping
@@ -60,7 +60,7 @@ export default function Post(props) {
                 <Image
                   style={styles.profilePic}
                   source={{
-                    uri: postData.user.profilePic,
+                    uri: postData.user?.userImageUri,
                   }}
                 />
               </View>
@@ -73,11 +73,11 @@ export default function Post(props) {
                   size={40}
                   color={isLiked ? "red" : "white"}
                 />
-                <Text style={styles.statsLabel}>{postData.likes}</Text>
+                <Text style={styles.statsLabel}>{postData?.likes}</Text>
               </TouchableOpacity>
               <View style={styles.iconContainer}>
                 <FontAwesome name="commenting" size={40} color="white" />
-                <Text style={styles.statsLabel}>{postData.comments}</Text>
+                <Text style={styles.statsLabel}>{postData?.comments}</Text>
               </View>
               <View style={styles.iconContainer}>
                 <MaterialCommunityIcons
@@ -85,28 +85,28 @@ export default function Post(props) {
                   size={40}
                   color="white"
                 />
-                <Text style={styles.statsLabel}>{postData.shares}</Text>
+                <Text style={styles.statsLabel}>{postData?.shares}</Text>
               </View>
             </View>
 
             <View style={styles.bottom}>
               <View>
-                <Text style={styles.handle}>@{postData.user.username}</Text>
-                <Text style={styles.desc}>{postData.desc}</Text>
+                <Text style={styles.handle}>@{postData.user?.username}</Text>
+                <Text style={styles.desc}>{postData?.desc}</Text>
                 <View style={styles.songRow}>
                   <Ionicons
                     name="musical-notes-sharp"
                     size={24}
                     color="white"
                   />
-                  <Text style={styles.songName}>{postData.songName}</Text>
+                  <Text style={styles.songName}>{postData?.songName}</Text>
                 </View>
               </View>
 
               <Image
                 style={styles.songImage}
                 source={{
-                  uri: postData.songImage,
+                  uri: postData.song?.songImageUri,
                 }}
               />
             </View>

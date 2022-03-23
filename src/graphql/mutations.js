@@ -8,8 +8,8 @@ export const createSong = /* GraphQL */ `
   ) {
     createSong(input: $input, condition: $condition) {
       id
-      name
-      imageUri
+      songName
+      songImageUri
       Posts {
         items {
           id
@@ -34,8 +34,8 @@ export const updateSong = /* GraphQL */ `
   ) {
     updateSong(input: $input, condition: $condition) {
       id
-      name
-      imageUri
+      songName
+      songImageUri
       Posts {
         items {
           id
@@ -60,8 +60,89 @@ export const deleteSong = /* GraphQL */ `
   ) {
     deleteSong(input: $input, condition: $condition) {
       id
-      name
-      imageUri
+      songName
+      songImageUri
+      Posts {
+        items {
+          id
+          videoUri
+          desc
+          userID
+          songID
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const createUser = /* GraphQL */ `
+  mutation CreateUser(
+    $input: CreateUserInput!
+    $condition: ModelUserConditionInput
+  ) {
+    createUser(input: $input, condition: $condition) {
+      id
+      username
+      email
+      userImageUri
+      Posts {
+        items {
+          id
+          videoUri
+          desc
+          userID
+          songID
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const updateUser = /* GraphQL */ `
+  mutation UpdateUser(
+    $input: UpdateUserInput!
+    $condition: ModelUserConditionInput
+  ) {
+    updateUser(input: $input, condition: $condition) {
+      id
+      username
+      email
+      userImageUri
+      Posts {
+        items {
+          id
+          videoUri
+          desc
+          userID
+          songID
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const deleteUser = /* GraphQL */ `
+  mutation DeleteUser(
+    $input: DeleteUserInput!
+    $condition: ModelUserConditionInput
+  ) {
+    deleteUser(input: $input, condition: $condition) {
+      id
+      username
+      email
+      userImageUri
       Posts {
         items {
           id
@@ -89,7 +170,28 @@ export const createPost = /* GraphQL */ `
       videoUri
       desc
       userID
+      user {
+        id
+        username
+        email
+        userImageUri
+        Posts {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
       songID
+      song {
+        id
+        songName
+        songImageUri
+        Posts {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
       createdAt
       updatedAt
     }
@@ -105,7 +207,28 @@ export const updatePost = /* GraphQL */ `
       videoUri
       desc
       userID
+      user {
+        id
+        username
+        email
+        userImageUri
+        Posts {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
       songID
+      song {
+        id
+        songName
+        songImageUri
+        Posts {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
       createdAt
       updatedAt
     }
@@ -121,114 +244,27 @@ export const deletePost = /* GraphQL */ `
       videoUri
       desc
       userID
+      user {
+        id
+        username
+        email
+        userImageUri
+        Posts {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
       songID
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const createUser = /* GraphQL */ `
-  mutation CreateUser(
-    $input: CreateUserInput!
-    $condition: ModelUserConditionInput
-  ) {
-    createUser(input: $input, condition: $condition) {
-      id
-      username
-      email
-      imageUri
-      posts {
+      song {
         id
-        videoUri
-        desc
-        userID
-        songID
+        songName
+        songImageUri
+        Posts {
+          nextToken
+        }
         createdAt
         updatedAt
-      }
-      Posts {
-        items {
-          id
-          videoUri
-          desc
-          userID
-          songID
-          createdAt
-          updatedAt
-        }
-        nextToken
-      }
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const updateUser = /* GraphQL */ `
-  mutation UpdateUser(
-    $input: UpdateUserInput!
-    $condition: ModelUserConditionInput
-  ) {
-    updateUser(input: $input, condition: $condition) {
-      id
-      username
-      email
-      imageUri
-      posts {
-        id
-        videoUri
-        desc
-        userID
-        songID
-        createdAt
-        updatedAt
-      }
-      Posts {
-        items {
-          id
-          videoUri
-          desc
-          userID
-          songID
-          createdAt
-          updatedAt
-        }
-        nextToken
-      }
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const deleteUser = /* GraphQL */ `
-  mutation DeleteUser(
-    $input: DeleteUserInput!
-    $condition: ModelUserConditionInput
-  ) {
-    deleteUser(input: $input, condition: $condition) {
-      id
-      username
-      email
-      imageUri
-      posts {
-        id
-        videoUri
-        desc
-        userID
-        songID
-        createdAt
-        updatedAt
-      }
-      Posts {
-        items {
-          id
-          videoUri
-          desc
-          userID
-          songID
-          createdAt
-          updatedAt
-        }
-        nextToken
       }
       createdAt
       updatedAt

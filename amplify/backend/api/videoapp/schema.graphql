@@ -1,8 +1,16 @@
 type Song @model @auth(rules: [{ allow: public }]) {
   id: ID!
-  name: String
-  imageUri: String
+  songName: String
+  songImageUri: String
   Posts: [Post] @hasMany(indexName: "bySong", fields: ["id"])
+}
+
+type User @model @auth(rules: [{ allow: public }]) {
+  id: ID!
+  username: String
+  email: String
+  userImageUri: String
+  Posts: [Post] @hasMany(indexName: "byUser", fields: ["id"])
 }
 
 type Post @model @auth(rules: [{ allow: public }]) {
@@ -10,14 +18,7 @@ type Post @model @auth(rules: [{ allow: public }]) {
   videoUri: String
   desc: String
   userID: ID! @index(name: "byUser")
+  user: User @belongsTo(fields: ["userID"])
   songID: ID! @index(name: "bySong")
-}
-
-type User @model @auth(rules: [{ allow: public }]) {
-  id: ID!
-  username: String
-  email: String
-  imageUri: String
-  posts: Post
-  Posts: [Post] @hasMany(indexName: "byUser", fields: ["id"])
+  song: Song @belongsTo(fields: ["songID"])
 }

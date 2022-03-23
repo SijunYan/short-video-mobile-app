@@ -5,8 +5,8 @@ export const onCreateSong = /* GraphQL */ `
   subscription OnCreateSong {
     onCreateSong {
       id
-      name
-      imageUri
+      songName
+      songImageUri
       Posts {
         items {
           id
@@ -28,8 +28,8 @@ export const onUpdateSong = /* GraphQL */ `
   subscription OnUpdateSong {
     onUpdateSong {
       id
-      name
-      imageUri
+      songName
+      songImageUri
       Posts {
         items {
           id
@@ -51,8 +51,80 @@ export const onDeleteSong = /* GraphQL */ `
   subscription OnDeleteSong {
     onDeleteSong {
       id
-      name
-      imageUri
+      songName
+      songImageUri
+      Posts {
+        items {
+          id
+          videoUri
+          desc
+          userID
+          songID
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onCreateUser = /* GraphQL */ `
+  subscription OnCreateUser {
+    onCreateUser {
+      id
+      username
+      email
+      userImageUri
+      Posts {
+        items {
+          id
+          videoUri
+          desc
+          userID
+          songID
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onUpdateUser = /* GraphQL */ `
+  subscription OnUpdateUser {
+    onUpdateUser {
+      id
+      username
+      email
+      userImageUri
+      Posts {
+        items {
+          id
+          videoUri
+          desc
+          userID
+          songID
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onDeleteUser = /* GraphQL */ `
+  subscription OnDeleteUser {
+    onDeleteUser {
+      id
+      username
+      email
+      userImageUri
       Posts {
         items {
           id
@@ -77,7 +149,28 @@ export const onCreatePost = /* GraphQL */ `
       videoUri
       desc
       userID
+      user {
+        id
+        username
+        email
+        userImageUri
+        Posts {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
       songID
+      song {
+        id
+        songName
+        songImageUri
+        Posts {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
       createdAt
       updatedAt
     }
@@ -90,7 +183,28 @@ export const onUpdatePost = /* GraphQL */ `
       videoUri
       desc
       userID
+      user {
+        id
+        username
+        email
+        userImageUri
+        Posts {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
       songID
+      song {
+        id
+        songName
+        songImageUri
+        Posts {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
       createdAt
       updatedAt
     }
@@ -103,105 +217,27 @@ export const onDeletePost = /* GraphQL */ `
       videoUri
       desc
       userID
+      user {
+        id
+        username
+        email
+        userImageUri
+        Posts {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
       songID
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const onCreateUser = /* GraphQL */ `
-  subscription OnCreateUser {
-    onCreateUser {
-      id
-      username
-      email
-      imageUri
-      posts {
+      song {
         id
-        videoUri
-        desc
-        userID
-        songID
+        songName
+        songImageUri
+        Posts {
+          nextToken
+        }
         createdAt
         updatedAt
-      }
-      Posts {
-        items {
-          id
-          videoUri
-          desc
-          userID
-          songID
-          createdAt
-          updatedAt
-        }
-        nextToken
-      }
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const onUpdateUser = /* GraphQL */ `
-  subscription OnUpdateUser {
-    onUpdateUser {
-      id
-      username
-      email
-      imageUri
-      posts {
-        id
-        videoUri
-        desc
-        userID
-        songID
-        createdAt
-        updatedAt
-      }
-      Posts {
-        items {
-          id
-          videoUri
-          desc
-          userID
-          songID
-          createdAt
-          updatedAt
-        }
-        nextToken
-      }
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const onDeleteUser = /* GraphQL */ `
-  subscription OnDeleteUser {
-    onDeleteUser {
-      id
-      username
-      email
-      imageUri
-      posts {
-        id
-        videoUri
-        desc
-        userID
-        songID
-        createdAt
-        updatedAt
-      }
-      Posts {
-        items {
-          id
-          videoUri
-          desc
-          userID
-          songID
-          createdAt
-          updatedAt
-        }
-        nextToken
       }
       createdAt
       updatedAt
