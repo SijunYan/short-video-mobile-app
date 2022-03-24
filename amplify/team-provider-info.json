@@ -10,6 +10,11 @@
       "StackName": "amplify-videoapp-dev-233720",
       "StackId": "arn:aws:cloudformation:ap-southeast-2:688539212808:stack/amplify-videoapp-dev-233720/0d39a170-a9dd-11ec-a66b-02c6bb66ea40",
       "AmplifyAppId": "dnnq2n379h8pq"
+    },
+    "categories": {
+      "auth": {
+        "videoapp64109f8d": {}
+      }
     }
   }
 }

@@ -4,6 +4,7 @@ import Post from "../../components/Post";
 import { Viewport } from "@skele/components";
 import { listPosts } from "../../graphql/queries";
 import { API, graphqlOperation } from "aws-amplify";
+// import { postsData } from "../../../dummyData/postsData";
 
 export default function Home() {
   const [postsData, setPostsData] = useState([]);

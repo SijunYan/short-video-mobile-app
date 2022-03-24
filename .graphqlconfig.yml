@@ -1,6 +1,6 @@
 projects:
   videoapp:
-    schemaPath: src/graphql/schema.json
+    schemaPath: amplify/backend/api/videoapp/build/schema.graphql
     includes:
       - src/graphql/**/*.js
     excludes:
