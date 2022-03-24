@@ -29,7 +29,7 @@ export default function Post(props) {
   const [toPaly, setToPlay] = React.useState(false);
   const [isLiked, setIsLiked] = React.useState(false);
 
-  // set video uri format: http or s3
+  // reset video uri format: http or s3
   useEffect(() => {
     const getVideoUri = async () => {
       if (postData.videoUri.startsWith("http")) {

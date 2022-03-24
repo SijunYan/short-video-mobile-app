@@ -15,6 +15,7 @@ export default function Navigation() {
           name="HomeStack"
           component={HomeBottomTabNavigatior}
         />
+        <RootStack.Screen name="CreatePost" component={CreatePost} />
       </RootStack.Navigator>
     </NavigationContainer>
   );

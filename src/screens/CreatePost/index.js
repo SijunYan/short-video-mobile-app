@@ -15,7 +15,7 @@ export default function CreatePost() {
   const route = useRoute();
   const navigation = useNavigation();
 
-  //upload to S3, return uri
+  //automatically upload to S3, return uri
   const uploadToStorage = async (imagePath) => {
     try {
       const response = await fetch(imagePath);
@@ -45,7 +45,7 @@ export default function CreatePost() {
         videoUri: videoKey,
         description: description,
         userID: userInfo.attributes.sub,
-        songID: "b6e2ee3a-04a7-4b25-aef5-90b41e4bba33",
+        songID: "b6e2ee3a-04a7-4b25-aef5-90b41e4bba33", //hardcode
       };
       const response = await API.graphql(
         graphqlOperation(createPost, { input: newPost })
