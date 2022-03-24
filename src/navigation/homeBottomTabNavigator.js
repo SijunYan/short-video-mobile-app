@@ -6,6 +6,7 @@ import Inbox from "../screens/Inbox";
 import Profile from "../screens/Profile";
 import Upload from "../screens/Upload";
 import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
+import CameraScreen from "../screens/CameraScreen";
 
 const Tab = createBottomTabNavigator();
 
@@ -48,7 +49,7 @@ export default function HomeBottomTabNavigatior({ route }) {
       />
       <Tab.Screen
         name="Uplaod"
-        component={Upload}
+        component={CameraScreen}
         options={{
           tabBarIcon: ({ focused }) => (
             <Ionicons

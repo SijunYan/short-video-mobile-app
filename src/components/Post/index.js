@@ -16,17 +16,30 @@ import {
   FontAwesome,
 } from "@expo/vector-icons";
 import { Viewport } from "@skele/components";
+import { Storage } from "aws-amplify";
 
 const ViewportAwareVideo = Viewport.Aware(Video);
 
 export default function Post(props) {
   const video = React.useRef(null);
   const [status, setStatus] = React.useState({});
+  const [videoUri, setVideoUri] = React.useState();
 
-  //manipulate post data inside component
   const [postData, setPostData] = React.useState(props.postData);
   const [toPaly, setToPlay] = React.useState(false);
   const [isLiked, setIsLiked] = React.useState(false);
+
+  // set video uri format: http or s3
+  useEffect(() => {
+    const getVideoUri = async () => {
+      if (postData.videoUri.startsWith("http")) {
+        setVideoUri(postData.videoUri);
+        return;
+      }
+      setVideoUri(await Storage.get(postData.videoUri));
+    };
+    getVideoUri();
+  }, []);
 
   const handleLike = () => {
     setIsLiked(!isLiked);
@@ -44,7 +57,7 @@ export default function Post(props) {
           <ViewportAwareVideo
             style={styles.video}
             source={{
-              uri: postData?.videoUri,
+              uri: videoUri,
             }}
             resizeMode="cover"
             isLooping
